@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layouts/layout}">
+
+<head>
+    <title>Home Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col" layout:fragment="content">
+            <h1>Welcome to countries search application</h1>
+            <br>
+            <br>
+            <br>
+            <!--<form th:object="${search}" th:action="@{/country/{termToSearch}(termToSearch=${search})}" method="get">-->
+            <form th:object="${search}" th:action="@{/country/find/}" method="get">
+                <div class="form-row">
+                    <input type="text" class="form-control" id="search" th:value="${search}" placeholder="term to search" />
+                </div>
+                <div class="row" th:if="${response != null && response.hasError && response.status != null}">
+                    <span style="color: red" th:text="${response.status.message}"></span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

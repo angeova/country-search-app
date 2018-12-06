@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layouts/layout}">
+
+<head>
+    <title>Countries</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col" layout:fragment="content">
+            <form>
+                <fieldset>
+                    <legend>Country detail</legend>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="alpha2Code">Alpha code 2</label>
+                            <input type="text" class="form-control" id="alpha2Code" placeholder="alpha2Code" th:value="${item.alpha2Code}" readonly />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="alpha3Code">Alpha code 3</label>
+                            <input type="text" class="form-control" id="alpha3Code" placeholder="alpha3Code" th:value="${item.alpha3Code}" readonly />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="name" th:value="${item.name}" readonly />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="nativeName">Native name</label>
+                            <input type="text" class="form-control" id="nativeName" placeholder="nativeName" th:value="${item.nativeName}" readonly />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="capital">Capital</label>
+                            <input type="text" class="form-control" id="capital" placeholder="capital" th:value="${item.capital}" readonly />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="demonym">Demonym</label>
+                            <input type="text" class="form-control" id="demonym" placeholder="capital" th:value="${item.demonym}" readonly />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="region">Region</label>
+                            <input type="text" class="form-control" id="region" placeholder="region" th:value="${item.region}" readonly />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="subregion">Sub region</label>
+                            <input type="text" class="form-control" id="subregion" placeholder="subregion" th:value="${item.subregion}" readonly />
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Country geoloc</legend>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="population">Population</label>
+                            <input type="number" class="form-control" id="population" placeholder="population" th:value="${item.population}" readonly />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="area">Area</label>
+                            <input type="text" class="form-control" id="area" placeholder="area" th:value="${item.area}" readonly />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="lat">Lat</label>
+                            <input type="text" class="form-control" id="lat" placeholder="lat" th:value="${item.latlng[0]}" readonly />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="long">Long</label>
+                            <input type="text" class="form-control" id="long" placeholder="long" th:value="${item.latlng[1]}" readonly />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="languages">Languages</label>
+                            <table class="table" id="languages">
+                                <thead>
+                                <tr class="table-active">
+                                    <th> Code </th>
+                                    <th> Code </th>
+                                    <th> Name </th>
+                                    <th> Native name </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:if="${item.languages.empty}">
+                                    <td colspan="2"> No Languages Available </td>
+                                </tr>
+                                <tr th:each="lang : ${item.languages}">
+                                    <td><span th:text="${lang.iso639_1}"> </span></td>
+                                    <td><span th:text="${lang.iso639_2}"> </span></td>
+                                    <td><span th:text="${lang.name}"> </span></td>
+                                    <td><span th:text="${lang.nativeName}"> </span></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="currencies">Currencies</label>
+                            <table class="table" id="currencies">
+                                <thead>
+                                <tr class="table-primary">
+                                    <th> Code </th>
+                                    <th> Name </th>
+                                    <th> Symbol </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:if="${item.currencies.empty}">
+                                    <td colspan="2"> No Currencies Available </td>
+                                </tr>
+                                <tr th:each="curr : ${item.currencies}">
+                                    <td><span th:text="${curr.code}"> </span></td>
+                                    <td><span th:text="${curr.name}"> </span></td>
+                                    <td><span th:text="${curr.symbol}"> </span></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

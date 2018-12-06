@@ -1,0 +1,17 @@
+ci/gcorp/countries/manager/CountriesManagerApplication.class
+ci/gcorp/countries/manager/utils/dto/LanguageDto.class
+ci/gcorp/countries/manager/utils/ParamUtils.class
+ci/gcorp/countries/manager/config/ThymeleafLayoutConfig.class
+ci/gcorp/countries/manager/utils/dto/TranslationDto.class
+ci/gcorp/countries/manager/controller/CountriesController.class
+ci/gcorp/countries/manager/services/CountriesService.class
+ci/gcorp/countries/manager/utils/contract/Response.class
+ci/gcorp/countries/manager/config/WebMvcConfig.class
+ci/gcorp/countries/manager/repository/CountryRepository$1.class
+ci/gcorp/countries/manager/utils/RestUtils.class
+ci/gcorp/countries/manager/utils/dto/RegionalBlocDto.class
+ci/gcorp/countries/manager/utils/dto/CountryDto.class
+ci/gcorp/countries/manager/utils/dto/CurrencyDto.class
+ci/gcorp/countries/manager/repository/CountryRepository.class
+ci/gcorp/countries/manager/utils/contract/ResponseBase.class
+ci/gcorp/countries/manager/utils/contract/Status.class

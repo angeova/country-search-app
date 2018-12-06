@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layouts/layout}">
+
+<head>
+    <title>Countries</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col" layout:fragment="content">
+            <h1>Countries list</h1>
+            <div class="row">
+                <table class="table">
+                    <thead>
+                    <tr class="table-dark">
+                        <th> -</th>
+                        <th> Code</th>
+                        <th> Code</th>
+                        <th> Name</th>
+                        <th> Native name</th>
+                        <th> Capital</th>
+                        <th> Demonym</th>
+                        <th> Region</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:if="${itemsPage.content.empty}">
+                        <td colspan="2"> No Countries Available</td>
+                    </tr>
+                    <tr th:each="item, iStat : ${itemsPage.content}" th:alt-title="${iStat.even}? 'even' : 'odd'">
+                        <td><img th:src="${item.flag}" width="25" height="25"/></td>
+                        <td><span th:text="${item.alpha3Code}"> </span></td>
+                        <td><span th:text="${item.alpha2Code}"> </span></td>
+                        <td>
+                            <a th:href="@{/country/findByName/{name}(name=${item.name})}" th:text="${item.name}"></a>
+                        </td>
+                        <td><span th:text="${item.nativeName}"> </span></td>
+                        <td><span th:text="${item.capital}"> </span></td>
+                        <td><span th:text="${item.demonym}"> </span></td>
+                        <td><span th:text="${item.region}"> </span></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row">
+                <div th:if="${itemsPage.totalPages != 1}" class="form-group col-md-11 pagination pagination-centered">
+                    <ul class="pagination">
+                        <li th:class="${itemsPage.number == 0} ? disabled">
+                            <a class="pageLink" th:href="@{/country/list(size=${selectedPageSize}, page=1)}">&laquo;</a>
+                        </li>
+                        <li th:class="${itemsPage.number == 0} ? disabled">
+                            <a class="pageLink" th:href="@{/country/list(size=${selectedPageSize}, page=${itemsPage.number})}">&larr;</a>
+                        </li>
+                        <li th:class="${itemsPage.number == (page - 1)} ? 'active pointer-disabled'"
+                            th:each="page : ${pageNumbers}">
+                            <a class="pageLink" th:href="@{/country/list(size=${selectedPageSize}, page=${page})}"
+                               th:text="${page}"></a>
+                        </li>
+                        <li th:class="${itemsPage.number + 1 == itemsPage.totalPages} ? disabled">
+                            <a class="pageLink"
+                               th:href="@{/country/list(size=${selectedPageSize}, page=${itemsPage.number + 2})}">&rarr;</a>
+                        </li>
+                        <li th:class="${itemsPage.number + 1 == itemsPage.totalPages} ? disabled">
+                            <a class="pageLink"
+                               th:href="@{/country/list(size=${selectedPageSize}, page=${itemsPage.totalPages})}">&raquo;</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
