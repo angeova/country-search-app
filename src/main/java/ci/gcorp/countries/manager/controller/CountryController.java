@@ -6,11 +6,9 @@ import ci.gcorp.countries.manager.utils.dto.CountryDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 import java.util.Optional;
@@ -73,8 +71,8 @@ public class CountryController {
         return mav;
     }
 
-    @RequestMapping("/country/find/{search}")
-    public ModelAndView find(@PathVariable("search") String search) {
+    @PostMapping("/country/find")
+    public ModelAndView find(@RequestParam(required = false, name = "search") String search) {
         Response<CountryDto> response = countriesService.find("name", search, false);
 
         ModelAndView mav = null;

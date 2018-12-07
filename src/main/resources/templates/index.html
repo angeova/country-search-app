@@ -14,10 +14,9 @@
             <br>
             <br>
             <br>
-            <!--<form th:object="${search}" th:action="@{/country/{termToSearch}(termToSearch=${search})}" method="get">-->
-            <form th:object="${search}" th:action="@{/country/find/}" method="get">
+            <form th:action="@{/country/find/}" method="post" th:object="${search}">
                 <div class="form-row">
-                    <input type="text" class="form-control" id="search" th:value="${search}" placeholder="term to search" />
+                    <input type="text" class="form-control" id="search" placeholder="term to search" th:value="${search}" required />
                 </div>
                 <div class="row" th:if="${response != null && response.hasError && response.status != null}">
                     <span style="color: red" th:text="${response.status.message}"></span>
