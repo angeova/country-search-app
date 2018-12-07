@@ -1,5 +1,6 @@
 package ci.gcorp.countries.manager.controller;
 
+import ci.gcorp.countries.manager.utils.dto.CountryDto;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +16,7 @@ public class HomeController {
     ModelAndView index() {
         ModelAndView mav = new ModelAndView("index");
         mav.addObject("response", null);
+        mav.addObject("search", new CountryDto());
         return mav;
     }
 }

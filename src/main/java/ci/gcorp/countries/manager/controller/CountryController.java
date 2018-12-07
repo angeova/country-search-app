@@ -72,8 +72,9 @@ public class CountryController {
     }
 
     @PostMapping("/country/find")
-    public ModelAndView find(@RequestParam(required = false, name = "search") String search) {
-        Response<CountryDto> response = countriesService.find("name", search, false);
+    public ModelAndView find(@RequestParam String name) {
+        //public ModelAndView find(@RequestParam(required = false, name = "search") String search) {
+        Response<CountryDto> response = countriesService.find("name", name, false);
 
         ModelAndView mav = null;
         if (!response.isHasError() && response.getItems() != null && !response.getItems().isEmpty()) {
@@ -82,6 +83,7 @@ public class CountryController {
         } else {
             mav = new ModelAndView("index");
             mav.addObject("response", response);
+            mav.addObject("search", new CountryDto());
         }
         return mav;
     }
