@@ -48,23 +48,23 @@
                 <div th:if="${itemsPage.totalPages != 1}" class="form-group col-md-11 pagination pagination-centered">
                     <ul class="pagination">
                         <li th:class="${itemsPage.number == 0} ? disabled">
-                            <a class="pageLink" th:href="@{/country/list(size=${selectedPageSize}, page=1)}">&laquo;</a>
+                            <a class="pageLink" th:href="@{/country/list(size=${selectedPageSize}, page=1, name=${name})}">&laquo;</a>
                         </li>
                         <li th:class="${itemsPage.number == 0} ? disabled">
-                            <a class="pageLink" th:href="@{/country/list(size=${selectedPageSize}, page=${itemsPage.number})}">&larr;</a>
+                            <a class="pageLink" th:href="@{/country/list(size=${selectedPageSize}, page=${itemsPage.number}, name=${name})}">&larr;</a>
                         </li>
                         <li th:class="${itemsPage.number == (page - 1)} ? 'active pointer-disabled'"
                             th:each="page : ${pageNumbers}">
-                            <a class="pageLink" th:href="@{/country/list(size=${selectedPageSize}, page=${page})}"
+                            <a class="pageLink" th:href="@{/country/list(size=${selectedPageSize}, page=${page}, name=${name})}"
                                th:text="${page}"></a>
                         </li>
                         <li th:class="${itemsPage.number + 1 == itemsPage.totalPages} ? disabled">
                             <a class="pageLink"
-                               th:href="@{/country/list(size=${selectedPageSize}, page=${itemsPage.number + 2})}">&rarr;</a>
+                               th:href="@{/country/list(size=${selectedPageSize}, page=${itemsPage.number + 2}, name=${name})}">&rarr;</a>
                         </li>
                         <li th:class="${itemsPage.number + 1 == itemsPage.totalPages} ? disabled">
                             <a class="pageLink"
-                               th:href="@{/country/list(size=${selectedPageSize}, page=${itemsPage.totalPages})}">&raquo;</a>
+                               th:href="@{/country/list(size=${selectedPageSize}, page=${itemsPage.totalPages}, name=${name})}">&raquo;</a>
                         </li>
                     </ul>
                 </div>

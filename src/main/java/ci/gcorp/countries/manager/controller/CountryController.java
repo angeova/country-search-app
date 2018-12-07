@@ -27,7 +27,7 @@ public class CountryController {
 
     private static final int BUTTONS_TO_SHOW = 5;
 
-    @RequestMapping("/country/all")
+    @GetMapping("/country/all")
     public ModelAndView findAll() {
         Response<CountryDto> response = countriesService.findAll();
 
@@ -36,29 +36,13 @@ public class CountryController {
         return mav;
     }
 
-    @RequestMapping("/country/list")
-    public ModelAndView findAll(@RequestParam("page") Optional<Integer> page,
+    @GetMapping("/country/list")
+    public ModelAndView findAll(@RequestParam Optional<String> name, @RequestParam("page") Optional<Integer> page,
                                 @RequestParam("size") Optional<Integer> size) {
-        int currentPage = page.orElse(1);
-        int pageSize    = size.orElse(10);
-
-        Page<CountryDto> itemsPage = countriesService.findAllPaginated(PageRequest.of(currentPage - 1, pageSize));
-
-        ModelAndView mav = new ModelAndView("country/list");
-
-        int totalPages = itemsPage.getTotalPages();
-        if (totalPages > 0) {
-            List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
-                                                 .boxed()
-                                                 .collect(Collectors.toList());
-            mav.addObject("pageNumbers", pageNumbers);
-        }
-        mav.addObject("itemsPage", itemsPage);
-        mav.addObject("selectedPageSize", pageSize);
-        return mav;
+        return findData(name.orElse(null), page, size);
     }
 
-    @RequestMapping("/country/findByName/{name}")
+    @GetMapping("/country/findByName/{name}")
     public ModelAndView findByName(@PathVariable("name") String name) {
         Response<CountryDto> response = countriesService.find("name", name, true);
 
@@ -76,10 +60,14 @@ public class CountryController {
     @PostMapping("/country/find")
     public ModelAndView find(@RequestParam String name, @RequestParam("page") Optional<Integer> page,
                              @RequestParam("size") Optional<Integer> size) {
+        return findData(name, page, size);
+    }
+
+    private ModelAndView findData(String name, Optional<Integer> page, Optional<Integer> size) {
         int                 currentPage = page.orElse(1);
         int                 pageSize    = size.orElse(10);
         Map<String, Object> errorMap    = new HashMap<>();
-        Page<CountryDto>    itemsPage   = countriesService.findByFieldPaginated(PageRequest.of(currentPage - 1, pageSize), "name", name, false, errorMap);
+        Page<CountryDto>    itemsPage   = (name == null || name.isEmpty()) ? countriesService.findAllPaginated(PageRequest.of(currentPage - 1, pageSize)) : countriesService.findByFieldPaginated(PageRequest.of(currentPage - 1, pageSize), "name", name, false, errorMap);
         ModelAndView        mav         = null;
         if (!errorMap.containsKey("status")) {
             mav = new ModelAndView("country/list");
@@ -92,6 +80,7 @@ public class CountryController {
             }
             mav.addObject("itemsPage", itemsPage);
             mav.addObject("selectedPageSize", pageSize);
+            mav.addObject("name", name);
         } else {
             mav = new ModelAndView("index");
             Response response = new Response();
