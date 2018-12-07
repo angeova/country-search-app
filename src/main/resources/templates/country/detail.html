@@ -14,13 +14,17 @@
                 <fieldset>
                     <legend>Country detail</legend>
                     <div class="form-row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-4">
                             <label for="alpha2Code">Alpha code 2</label>
                             <input type="text" class="form-control" id="alpha2Code" placeholder="alpha2Code" th:value="${item.alpha2Code}" readonly />
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-4">
                             <label for="alpha3Code">Alpha code 3</label>
                             <input type="text" class="form-control" id="alpha3Code" placeholder="alpha3Code" th:value="${item.alpha3Code}" readonly />
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="alpha3Code">Cioc</label>
+                            <input type="text" class="form-control" id="cioc" placeholder="cioc" th:value="${item.cioc}" readonly />
                         </div>
                         <div class="form-group col-md-6">
                             <label for="name">Name</label>
@@ -46,18 +50,109 @@
                             <label for="subregion">Sub region</label>
                             <input type="text" class="form-control" id="subregion" placeholder="subregion" th:value="${item.subregion}" readonly />
                         </div>
+                        <div class="form-group col-md-6">
+                            <label for="languages">AltSpellings</label>
+                            <table class="table" id="altSpellings">
+                                <thead>
+                                <tr class="table-primary">
+                                    <th> # </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:if="${item.altSpellings.empty}">
+                                    <td colspan="2"> No altSpellings Available </td>
+                                </tr>
+                                <tr th:each="altSpelling : ${item.altSpellings}">
+                                    <td><span th:text="${altSpelling}"> </span></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="languages">Regional Blocs</label>
+                            <table class="table" id="regionalBlocs">
+                                <thead>
+                                <tr class="table-active">
+                                    <th> Acronym </th>
+                                    <th> Name </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:if="${item.regionalBlocs.empty}">
+                                    <td colspan="2"> No regionalBlocs Available </td>
+                                </tr>
+                                <tr th:each="regionalBloc : ${item.regionalBlocs}">
+                                    <td><span th:text="${regionalBloc.acronym}"> </span></td>
+                                    <td><span th:text="${regionalBloc.name}"> </span></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Translations</legend>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="de">German</label>
+                            <input type="text" class="form-control" id="de" placeholder="de" th:value="${item.translations.de}" readonly />
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="es">Spanish</label>
+                            <input type="text" class="form-control" id="es" placeholder="es" th:value="${item.translations.es}" readonly />
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="fr">Français</label>
+                            <input type="text" class="form-control" id="fr" placeholder="fr" th:value="${item.translations.fr}" readonly />
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="ja">Japan</label>
+                            <input type="text" class="form-control" id="ja" placeholder="ja" th:value="${item.translations.ja}" readonly />
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="it">Italia</label>
+                            <input type="text" class="form-control" id="it" placeholder="it" th:value="${item.translations.it}" readonly />
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="br">Brasil</label>
+                            <input type="text" class="form-control" id="br" placeholder="br" th:value="${item.translations.br}" readonly />
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="pt">Portuguese</label>
+                            <input type="text" class="form-control" id="pt" placeholder="pt" th:value="${item.translations.pt}" readonly />
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="nl">Nederland</label>
+                            <input type="text" class="form-control" id="nl" placeholder="nl" th:value="${item.translations.nl}" readonly />
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="hr">Hrvatska</label>
+                            <input type="text" class="form-control" id="hr" placeholder="hr" th:value="${item.translations.hr}" readonly />
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="fa">Arabic</label>
+                            <input type="text" class="form-control" id="fa" placeholder="fa" th:value="${item.translations.fa}" readonly />
+                        </div>
                     </div>
                 </fieldset>
                 <fieldset>
                     <legend>Country geoloc</legend>
                     <div class="form-row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-3">
                             <label for="population">Population</label>
                             <input type="number" class="form-control" id="population" placeholder="population" th:value="${item.population}" readonly />
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-3">
                             <label for="area">Area</label>
                             <input type="text" class="form-control" id="area" placeholder="area" th:value="${item.area}" readonly />
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="area">Gini</label>
+                            <input type="text" class="form-control" id="gini" placeholder="gini" th:value="${item.gini}" readonly />
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="numericCode">Numeric Code</label>
+                            <input type="text" class="form-control" id="numericCode" placeholder="numericCode" th:value="${item.numericCode}" readonly />
                         </div>
                         <div class="form-group col-md-6">
                             <label for="lat">Lat</label>
@@ -95,7 +190,7 @@
                             <label for="currencies">Currencies</label>
                             <table class="table" id="currencies">
                                 <thead>
-                                <tr class="table-primary">
+                                <tr class="table-active">
                                     <th> Code </th>
                                     <th> Name </th>
                                     <th> Symbol </th>
@@ -109,6 +204,74 @@
                                     <td><span th:text="${curr.code}"> </span></td>
                                     <td><span th:text="${curr.name}"> </span></td>
                                     <td><span th:text="${curr.symbol}"> </span></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <table class="table" id="borders">
+                                <thead>
+                                <tr class="table-primary">
+                                    <th> Country borders </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:if="${item.borders.empty}">
+                                    <td colspan="2"> No borders Available </td>
+                                </tr>
+                                <tr th:each="border : ${item.borders}">
+                                    <td><span th:text="${border}"> </span></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <table class="table" id="timezones">
+                                <thead>
+                                <tr class="table-primary">
+                                    <th> Time zone </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:if="${item.timezones.empty}">
+                                    <td colspan="2"> No timezones Available </td>
+                                </tr>
+                                <tr th:each="timezone : ${item.timezones}">
+                                    <td><span th:text="${timezone}"> </span></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <table class="table" id="callingCodes">
+                                <thead>
+                                <tr class="table-primary">
+                                    <th> Calling Codes </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:if="${item.callingCodes.empty}">
+                                    <td colspan="2"> No callingCodes Available </td>
+                                </tr>
+                                <tr th:each="callingCode : ${item.callingCodes}">
+                                    <td><span th:text="${callingCode}"> </span></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <table class="table" id="topLevelDomain">
+                                <thead>
+                                <tr class="table-primary">
+                                    <th> Top Level Domain </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:if="${item.topLevelDomain.empty}">
+                                    <td colspan="2"> No topLevelDomain Available </td>
+                                </tr>
+                                <tr th:each="topLevelDomainElt : ${item.topLevelDomain}">
+                                    <td><span th:text="${topLevelDomainElt}"> </span></td>
                                 </tr>
                                 </tbody>
                             </table>
