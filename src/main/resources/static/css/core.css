@@ -57,19 +57,29 @@ code {
 .pagination li {
     color: black;
     float: left;
-    padding: 8px 16px;
+    //padding: 8px 16px;
     text-decoration: none;
     border: 1px solid #ddd;
     width: 30px;
-    height: 35px;
+    height: 30px;
     text-align: center;
     font-size: 10px;
 }
 
 .pagination li.active {
-    background-color: #4CAF50;
+    background-color: #3881af;
+    border: 1px solid #3881af;
+}
+
+.pagination li.active a {
     color: white;
-    border: 1px solid #4CAF50;
+}
+
+.pagination li a {
+    display: block;
+    width: 30px;
+    height: 30px;
+    padding-top: 5px;
 }
 
 .pagination li:hover:not(.active) {
@@ -84,4 +94,8 @@ code {
 .pagination li:last-child {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+}
+
+select.cust-style:not([size]):not([multiple]) {
+    height: calc(2.25rem + 6px) !important;
 }

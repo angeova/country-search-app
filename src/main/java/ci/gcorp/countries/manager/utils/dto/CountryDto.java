@@ -35,4 +35,8 @@ public class CountryDto {
     private String                flag;
     private List<RegionalBlocDto> regionalBlocs;
     private String                cioc;
+    /**
+     * use for search
+     */
+    private String                fieldName;
 }
