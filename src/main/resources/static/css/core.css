@@ -20,6 +20,24 @@ body {
     background-color: #f5f5f5;
 }
 
+nav {
+    background-color: #563d7c
+}
+
+.navbar-light .navbar-brand {
+    color: white;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: rgba(249, 249, 249, 0.5) !important;
+}
+
+.navbar-light .navbar-nav .active>.nav-link{
+    color: white;
+}
+
+
+
 /* Custom page CSS
 -------------------------------------------------- */
 /* Not required for template or sticky footer method. */
@@ -57,7 +75,7 @@ code {
 .pagination li {
     color: black;
     float: left;
-    //padding: 8px 16px;
+/ / padding: 8 px 16 px;
     text-decoration: none;
     border: 1px solid #ddd;
     width: 30px;
