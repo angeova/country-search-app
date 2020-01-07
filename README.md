@@ -1,6 +1,6 @@
 # country-search-app
 
-country-search-app is an application like its name : country searching
+country-search-app is an application like its name : country searching ;)
 
 The application is available [here](https://aqueous-lowlands-91700.herokuapp.com/)
 
