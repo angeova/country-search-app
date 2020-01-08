@@ -8,7 +8,6 @@
 package ci.gcorp.countries.manager.utils.contract;
 
 import java.util.List;
-import javax.xml.bind.annotation.XmlRootElement;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
