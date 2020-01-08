@@ -23,7 +23,6 @@ import lombok.*;
 @Data
 @ToString
 @NoArgsConstructor
-@XmlRootElement
 @JsonInclude(Include.NON_NULL)
 public class Response<T> extends ResponseBase {
 
