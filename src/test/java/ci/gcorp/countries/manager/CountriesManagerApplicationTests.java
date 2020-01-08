@@ -24,7 +24,7 @@ public class CountriesManagerApplicationTests {
         // Verify request succeed
         Assert.assertEquals(false, response.isHasError());
         // Verify we got one data
-        Assert.assertEquals(true, response.getItems() != null && !response.getItems().isEmpty() && response.getItems().size() == 2);
+        Assert.assertEquals(true, response.getItems() != null && !response.getItems().isEmpty() && response.getItems().size() == 1);
     }
 
     @Test
