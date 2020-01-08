@@ -7,8 +7,6 @@
 
 package ci.gcorp.countries.manager.utils.contract;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import lombok.*;
@@ -22,7 +20,6 @@ import lombok.*;
 @Data
 @ToString
 @NoArgsConstructor
-@XmlRootElement
 @JsonInclude(Include.NON_NULL)
 public class Status {
 	private String	code;
